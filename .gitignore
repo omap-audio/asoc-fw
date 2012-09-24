@@ -20,3 +20,5 @@ install-sh
 depcomp
 config.*
 compile
+omap4_abe_new
+src/.libs*
