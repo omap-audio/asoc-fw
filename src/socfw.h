@@ -232,7 +232,9 @@ int ____ilog2_NaN(void);
 /* mixer control */
 struct soc_mixer_control {
 	int min, max, platform_max;
-	unsigned int reg, rreg, shift, rshift, invert;
+	unsigned int reg, rreg, shift, rshift;
+       unsigned int invert:1;
+       unsigned int autodisable:1;
 };
 
 struct soc_bytes {
@@ -294,6 +296,8 @@ struct snd_soc_dapm_widget {
 	unsigned int saved_value;		/* widget saved value */
 	unsigned int value;				/* widget current value */
 	unsigned int mask;			/* non-shifted mask */
+	unsigned int on_val;			/* on state value */
+	unsigned int off_val;			/* off state value */
 	unsigned char invert:1;			/* invert the power bit */
 	unsigned char ignore_suspend:1;         /* kept enabled over suspend */
 	unsigned char denum:1;		/* dynamic enum control */
